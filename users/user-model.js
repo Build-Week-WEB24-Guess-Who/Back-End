@@ -16,5 +16,6 @@ const findBy = filter => {
 
 module.exports = {
     add,
-    findBy
+    findBy, 
+    findById
 }

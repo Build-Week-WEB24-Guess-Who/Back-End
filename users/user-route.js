@@ -30,15 +30,7 @@ userRouter.post("/login", (req, res) => {
     Users.findBy({ username })
         .first()
         .then(user => {
-            // if (user && bcrypt.compareSync(password && user.password)) {
-            //     const token = generateToken(user);
-            //     res.status(200).json({
-            //         message: "Grab some popcorn and enjoy the show...",
-            //         token
-            //     })
-            // } else {
-            //     res.status(401).json({ message: "Invalid credentials"})
-            // }
+
 
             if (user && bcrypt.compareSync( password, user.password )) {
                 const token = generateToken(user);
@@ -49,14 +41,14 @@ userRouter.post("/login", (req, res) => {
             } else {
                 res.status(401).json({ message: "Invalid credentials"})
             }
-                //             const token = generateToken(user);
-                // res.status(200).json({
-                //     message: "Grab some popcorn and enjoy the show...",
-                //     token
-                // })
         })
         .catch(err => res.status(500).json({ message: "We cannot log you in at this time." }))
 })
 
+userRouter.get("/users/:id", (req, res) => {
+    Users.findById()
+        .then(user => res.status(200).json(user))
+        .catch(err => res.status(500).json({ message: "We could not find that user at this time."}))
+})
 //exports
 module.exports = userRouter;

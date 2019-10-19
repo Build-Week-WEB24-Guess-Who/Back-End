@@ -21,3 +21,11 @@ This is how your item would be returned:
 }
 ```
 ## Log in a user
+
+Login should be pretty basic: 
+```
+{
+    username: "",
+    password: ""
+}
+```
