@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const userRouter = express.Router();
 const Users = require("./user-model");
+const generateToken = require("../auth-n-middleware/generateToken");
 
 //sanity check
 
@@ -24,7 +25,37 @@ userRouter.post("/register", (req, res) => {
 })
 
 userRouter.post("/login", (req, res) => {
-    res.send("loginz");
+    let { username, password } = req.body;
+
+    Users.findBy({ username })
+        .first()
+        .then(user => {
+            // if (user && bcrypt.compareSync(password && user.password)) {
+            //     const token = generateToken(user);
+            //     res.status(200).json({
+            //         message: "Grab some popcorn and enjoy the show...",
+            //         token
+            //     })
+            // } else {
+            //     res.status(401).json({ message: "Invalid credentials"})
+            // }
+
+            if (user && bcrypt.compareSync( password, user.password )) {
+                const token = generateToken(user);
+                res.status(200).json({
+                    message: "Grab some popcorn and enjoy the show...",
+                    token
+                })
+            } else {
+                res.status(401).json({ message: "Invalid credentials"})
+            }
+                //             const token = generateToken(user);
+                // res.status(200).json({
+                //     message: "Grab some popcorn and enjoy the show...",
+                //     token
+                // })
+        })
+        .catch(err => res.status(500).json({ message: "We cannot log you in at this time." }))
 })
 
 //exports

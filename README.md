@@ -1,6 +1,6 @@
 # Back-End
 
-##Register a user
+## Register a user
 **Information required to register a user**
 ```
 {
@@ -20,4 +20,4 @@ This is how your item would be returned:
   "level": "Beginner"
 }
 ```
-##Log in a user
+## Log in a user
