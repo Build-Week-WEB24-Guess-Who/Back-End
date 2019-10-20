@@ -48,11 +48,11 @@ userRouter.post("/login", (req, res) => {
         .catch(err => res.status(500).json({ message: "We cannot log you in at this time." }))
 })
 
+//access user's own information immediately after login
+
 userRouter.get("/user", (req, res) => {
     const token = req.headers.authorization;
     if (token) {
-        // res.send("Hey there");
-        // console.log(token);
       jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
           if (err) {
               res.status(401).json({ message: "Something went wrong"})
@@ -60,8 +60,6 @@ userRouter.get("/user", (req, res) => {
               req.user = {
                   username: decodedToken.username,
               }
-            //    console.log(req.user);
-            //    res.send(req.user);
         Users.findBy(req.user)
         .then(user => res.status(200).json(user))
         .catch(err => res.status(500).json({ message: "We could not find that user at this time."})) 
@@ -74,15 +72,4 @@ userRouter.get("/user", (req, res) => {
 })
 
 
-//   if (token) {
-
-
-//   } else {
-//       res.status(400).json({ message: "no token provided"})
-//  }
-//     Users.findById(req.user)
-//         .then(user => res.status(200).json(user))
-//         .catch(err => res.status(500).json({ message: "We could not find that user at this time."}))
-// })
-//exports
 module.exports = userRouter;
