@@ -2,6 +2,7 @@
 
 ## Register a user
 **Information required to register a user**
+```Post``` /api/register
 ```
 {
     username: "",
@@ -21,6 +22,7 @@ This is how your item would be returned:
 }
 ```
 ## Log in a user
+```Post``` /api/login
 
 Login should be pretty basic: 
 ```
@@ -29,3 +31,17 @@ Login should be pretty basic:
     password: ""
 }
 ```
+
+## Return info for current user
+```Get```
+/api/users
+
+## Return games for current user
+
+```Get```
+
+## Add a new game
+
+```Post```
+
+## Add a user to a new game
