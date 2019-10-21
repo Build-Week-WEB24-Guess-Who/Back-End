@@ -1,5 +1,14 @@
 # Back-End
 
+## Dummy Data on Users
+
+Need to test info with premade data? Here's some:
+```
+        {id: 10, username: 'narwhal', password: "narwhal", points: 5, level: "Beginner"},
+        {id: 11, username: 'minke', password: "minke", points: 35, level: "Intermediate"},
+        {id: 12, username: 'beluga', password: "beluga", points: 70, level: "Advanced"}
+```
+
 ## Register a user
 **Information required to register a user**
 ```Post``` /api/register
@@ -36,21 +45,37 @@ Login should be pretty basic:
 ```Get```
 /api/users
 
+This should be just a basic get request
+
 ## Return games for current user
 
 ```Get```
+/api/games
 
+It should just be a basic get request
 
 
 ## Add a new game
 
 ```Post```
 /api/games
+
+You'll want to format it like this...
 ```
 {
   "game_name": "",
-  "instigator_id": ,
-  "friend_id": ,}
+  "instigator_id": ""
+  }
 ```
+Set instigator_id as your user's id.
+
+## See a game by id
+```Get```
+/api/games/:id
+
+## Delete a game
+```Delete```
+/api/games/:id
+
 
 ## Add a user to a new game
