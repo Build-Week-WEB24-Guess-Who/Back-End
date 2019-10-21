@@ -16,19 +16,23 @@ const findBy = filter => {
 
 //add games and friends functionality...
 
-const addGame = (newGame) => {
+const addGame = (newGame, id) => {
     return db("games").insert(newGame)
 }
 
 const getGames = (id) => {
     // return db("games").where({ instigator_id: id} || { friend_id: id})
-    return db("games").where({ instigator_id: id } || {friend_id: id});
+    return db("games").where({ instigator_id: id });
 }
 
+const getGameById = (id) => {
+    return db("games").where({id});
+}
 module.exports = {
     add,
     findBy, 
     findById,
     addGame,
-    getGames
+    getGames,
+    getGameById
 }

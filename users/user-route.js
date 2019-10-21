@@ -75,9 +75,17 @@ userRouter.get("/user", (req, res) => {
 //routes for users' games...
 
 userRouter.post("/games", validate, (req, res) => {
-    Users.addGame(req.body)
+    const { id } = req.user;
+    Users.addGame(req.body, id)
         .then(newGame => res.status(200).json(newGame))
         .catch(newGame => res.status(500).json({ message: "We could not add your user at this time"}))
+})
+
+userRouter.get("/games/:id", validate, (req, res) => {
+    const { id } = req.params;
+    Users.getGameById(id)
+        .then(thatGame => {res.status(200).json(thatGame)})
+        .catch(err => { res.status(500).json({ message: "We could not find that user at this time."})})
 })
 
 userRouter.get("/games", (req, res) => {
@@ -98,8 +106,6 @@ userRouter.get("/games", (req, res) => {
       })
 
     }
-    
-
 })
 
 

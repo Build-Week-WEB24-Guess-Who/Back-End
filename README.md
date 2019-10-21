@@ -36,21 +36,27 @@ Login should be pretty basic:
 ```Get```
 /api/users
 
+This should be just a basic get request
+
 ## Return games for current user
 
 ```Get```
+/api/games
 
+It should just be a basic get request
 
 
 ## Add a new game
 
 ```Post```
 /api/games
+
+You'll want to format it like this...
 ```
 {
   "game_name": "",
-  "instigator_id": ,
-  "friend_id": ,}
+  "instigator_id": ""
+  }
 ```
 
 ## Add a user to a new game
