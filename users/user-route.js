@@ -79,7 +79,28 @@ userRouter.post("/games", (req, res) => {
         .catch(newGame => res.status(500).json({ message: "We could not add your user at this time"}))
 })
 
+userRouter.get("/games", (req, res) => {
 
+    const token = req.headers.authorization;
+    if (token) {
+      jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
+          if (err) {
+              res.status(401).json({ message: "Something went wrong"})
+          } else {
+              req.user = {
+                id: decodedToken.id
+              }
+        Users.getGames(req.user.id)
+        .then(games => {
+            console.log(req.user);
+            res.status(200).json(games);})
+        .catch(err => res.status(500).json({ message: "We could not find that user at this time."})) 
+
+          }
+      })
+
+    }
+})
 
 
 module.exports = userRouter;

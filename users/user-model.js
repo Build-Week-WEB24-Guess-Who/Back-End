@@ -21,7 +21,7 @@ const addGame = (newGame) => {
 }
 
 const getGames = (id) => {
-    return db("games").where({ instigator_id: id})
+    return db("games").where({ instigator_id: id} || { friend_id: id});
 }
 
 module.exports = {
