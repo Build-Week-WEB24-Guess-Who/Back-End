@@ -71,5 +71,15 @@ userRouter.get("/user", (req, res) => {
 
 })
 
+//routes for users' games...
+
+userRouter.post("/games", (req, res) => {
+    Users.addGame(req.body)
+        .then(newGame => res.status(200).json(newGame))
+        .catch(newGame => res.status(500).json({ message: "We could not add your user at this time"}))
+})
+
+
+
 
 module.exports = userRouter;

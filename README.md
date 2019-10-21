@@ -40,8 +40,17 @@ Login should be pretty basic:
 
 ```Get```
 
+
+
 ## Add a new game
 
 ```Post```
+/api/games
+```
+{
+  "game_name": "",
+  "instigator_id": ,
+  "friend_id": ,}
+```
 
 ## Add a user to a new game
