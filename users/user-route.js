@@ -5,6 +5,7 @@ const secrets = require("../auth-n-middleware/secret"); //added
 const userRouter = express.Router();
 const Users = require("./user-model");
 const generateToken = require("../auth-n-middleware/generateToken");
+const validate = require("../auth-n-middleware/validate");
 
 //sanity check
 
@@ -73,7 +74,7 @@ userRouter.get("/user", (req, res) => {
 
 //routes for users' games...
 
-userRouter.post("/games", (req, res) => {
+userRouter.post("/games", validate, (req, res) => {
     Users.addGame(req.body)
         .then(newGame => res.status(200).json(newGame))
         .catch(newGame => res.status(500).json({ message: "We could not add your user at this time"}))
@@ -98,11 +99,7 @@ userRouter.get("/games", (req, res) => {
 
     }
     
-    // Users.getGames()
-    //     .then(user => {
-    //         res.status(200).json(user);
-    //     })
-    //     .catch(err => res.status(500).json({ message: "meh"}))
+
 })
 
 
