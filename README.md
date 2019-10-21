@@ -1,5 +1,14 @@
 # Back-End
 
+## Dummy Data on Users
+
+Need to test info with premade data? Here's some:
+```
+        {id: 10, username: 'narwhal', password: "narwhal", points: 5, level: "Beginner"},
+        {id: 11, username: 'minke', password: "minke", points: 35, level: "Intermediate"},
+        {id: 12, username: 'beluga', password: "beluga", points: 70, level: "Advanced"}
+```
+
 ## Register a user
 **Information required to register a user**
 ```Post``` /api/register

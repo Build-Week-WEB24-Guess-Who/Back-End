@@ -12,6 +12,11 @@ const validate = require("../auth-n-middleware/validate");
 userRouter.get("/", (req, res) => {
     res.send("userRouter works");
 })
+userRouter.get("/users", (req, res) => {
+    Users.getUsers()
+        .then(users => res.json(users))
+        .catch(err => res.json({ message: "oh noes"}))
+})
 
 //register and login
 
@@ -81,13 +86,6 @@ userRouter.post("/games", validate, (req, res) => {
         .catch(newGame => res.status(500).json({ message: "We could not add your user at this time"}))
 })
 
-userRouter.get("/games/:id", validate, (req, res) => {
-    const { id } = req.params;
-    Users.getGameById(id)
-        .then(thatGame => {res.status(200).json(thatGame)})
-        .catch(err => { res.status(500).json({ message: "We could not find that user at this time."})})
-})
-
 userRouter.get("/games", (req, res) => {
     const token = req.headers.authorization;
     if (token) {
@@ -108,6 +106,17 @@ userRouter.get("/games", (req, res) => {
     }
 })
 
+//games by id (adding, deleting)
+
+userRouter.get("/games/:id", validate, (req, res) => {
+    const { id } = req.params;
+    Users.getGameById(id)
+        .then(thatGame => {res.status(200).json(thatGame)})
+        .catch(err => { res.status(500).json({ message: "We could not find that user at this time."})})
+})
+
+
+
 userRouter.delete("/games/:id", validate, (req, res) => {
     const { id } = req.params;
     Users.deleteGame(id)
@@ -120,6 +129,12 @@ userRouter.delete("/games/:id", validate, (req, res) => {
         })
 })
 
+//adding and deleting friends from games
+userRouter.post("/games/:id/friends", validate, (req, res) => {
+
+    //how do you turn a friend name into an id #???
+    Users.addFriendToGame()
+})
 
 
 
