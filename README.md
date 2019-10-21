@@ -58,5 +58,6 @@ You'll want to format it like this...
   "instigator_id": ""
   }
 ```
+Set instigator_id as your user's id.
 
 ## Add a user to a new game

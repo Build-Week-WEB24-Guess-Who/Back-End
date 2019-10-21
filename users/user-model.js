@@ -28,11 +28,17 @@ const getGames = (id) => {
 const getGameById = (id) => {
     return db("games").where({id});
 }
+
+const deleteGame = (id) => {
+    return db("games").where({id}).delete();
+}
+
 module.exports = {
     add,
     findBy, 
     findById,
     addGame,
     getGames,
-    getGameById
+    getGameById,
+    deleteGame
 }

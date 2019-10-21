@@ -76,7 +76,7 @@ userRouter.get("/user", (req, res) => {
 
 userRouter.post("/games", validate, (req, res) => {
     const { id } = req.user;
-    Users.addGame(req.body, id)
+    Users.addGame(req.body)
         .then(newGame => res.status(200).json(newGame))
         .catch(newGame => res.status(500).json({ message: "We could not add your user at this time"}))
 })
@@ -106,6 +106,18 @@ userRouter.get("/games", (req, res) => {
       })
 
     }
+})
+
+userRouter.delete("/games/:id", (req, res) => {
+    const { id } = req.params;
+    Users.deleteGame(id)
+        .then(snaggedIt => {
+            if (snaggedIt) {
+                res.status(200).json({ message: "delete successful"})
+            } else {
+                res.status(404).json({ message: "no success"})
+            }
+        })
 })
 
 
