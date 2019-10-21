@@ -60,4 +60,13 @@ You'll want to format it like this...
 ```
 Set instigator_id as your user's id.
 
+## See a game by id
+```Get```
+/api/games/:id
+
+## Delete a game
+```Delete```
+/api/games/:id
+
+
 ## Add a user to a new game

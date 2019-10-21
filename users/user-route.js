@@ -108,7 +108,7 @@ userRouter.get("/games", (req, res) => {
     }
 })
 
-userRouter.delete("/games/:id", (req, res) => {
+userRouter.delete("/games/:id", validate, (req, res) => {
     const { id } = req.params;
     Users.deleteGame(id)
         .then(snaggedIt => {
