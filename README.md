@@ -48,6 +48,7 @@ https://bw-guess-who.herokuapp.com//api/games
 It should just be a basic get request
 
 
+
 ## Add a new game
 
 ```Post```

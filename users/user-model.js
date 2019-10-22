@@ -36,9 +36,13 @@ const deleteGame = (id) => {
     return db("games").where({id}).delete();
 }
 
-const addUserToGame = (friendId) => {
-    // return "I have noooo idea how to do this one..."
-    return db("user_games").insert(friendId);
+const addUserToGame = ( gameId, friend) => {
+    console.log(friend);
+    return db("user_games").insert({ game_id: gameId, user_id: friend});
+}
+
+const findUserByName = (username) => {
+    return db("users").where(username);
 }
 
 module.exports = {
@@ -49,6 +53,7 @@ module.exports = {
     addGame,
     getGames,
     getGameById,
-    deleteGame, 
+    deleteGame,
+    findUserByName, 
     addUserToGame
 }

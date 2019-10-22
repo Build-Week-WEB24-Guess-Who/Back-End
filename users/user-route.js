@@ -131,14 +131,63 @@ userRouter.delete("/games/:id", validate, (req, res) => {
 })
 
 //adding and deleting friends from games
-userRouter.post("/games/:id/friends", validate, (req, res) => {
+// userRouter.post("/games/:id/friends", validate, (req, res) => {
 
-    const friendId = req.body;
-    //how do you turn a friend name into an id #???
-    Users.addUserToGame(friendId)
-        .then(yas => res.status(200).json({ message: "yay!"}))
-        .catch(err => res.status(500).json({ message: "meh"}))
-})
+//     const friendId = req.body;
+//     //how do you turn a friend name into an id #???
+//     Users.addUserToGame(friendId)
+//         .then(yas => res.status(200).json({ message: "yay!"}))
+//         .catch(err => res.status(500).json({ message: "meh"}))
+// })
+
+// userRouter.get("/test", (req, res) => {
+//     const username = req.body.username;
+//     Users.findUserByName({username})
+//         .then(yeet => {
+//             res.json(yeet)
+//         })
+//         .catch(err => {
+//             console.log(err);
+//             res.json({ message: "oops" })
+//         })
+// })
+
+// userRouter.post("/games/:id/friends", (req, res) => {
+//     const username = req.body.username;
+//     console.log("req body", req.body);
+//     const { id } = req.params;
+
+//     Users.findUserByName({username})
+//         .then(friend => {
+//             myFriend = friend.id;
+//             console.log("friend", friend);
+//             res.status(200).json(friend);
+//             return myFriend
+//         })
+//         // .then(wins => {
+//         //     console.log("myFriend", myFriend)
+//         // Users.addUserToGame(id, myFriend)
+//         // .then(bestie => res.status(200).json({bestie}))
+//         // .catch(err => {
+//         //     console.log(err);
+//         //     res.status(500).json({ message: "oops"})})
+//         //     })
+//         // .catch(err => {
+//         //     res.status(500).json({ message: "something went wrong"});
+//         //     console.log(err);
+//         // })
+//         .catch(err => {
+//             res.status(500).json({ message: "Hello from the other side."})
+//         })
+//     })
+        
+
+//     Users.addUserToGame(id, myFriend)
+//         .then(bestie => res.status(200).json({bestie}))
+//         .catch(err => {
+//             console.log(err);
+//             res.status(500).json({ message: "oops"})})
+// })
 
 
 
