@@ -1,17 +1,10 @@
 # Back-End
 
-## Dummy Data on Users
 
-Need to test info with premade data? Here's some:
-```
-        {id: 10, username: 'narwhal', password: "narwhal", points: 5, level: "Beginner"},
-        {id: 11, username: 'minke', password: "minke", points: 35, level: "Intermediate"},
-        {id: 12, username: 'beluga', password: "beluga", points: 70, level: "Advanced"}
-```
 
 ## Register a user
 **Information required to register a user**
-```Post``` /api/register
+```Post``` https://bw-guess-who.herokuapp.com//api/register
 ```
 {
     username: "",
@@ -31,7 +24,7 @@ This is how your item would be returned:
 }
 ```
 ## Log in a user
-```Post``` /api/login
+```Post``` https://bw-guess-who.herokuapp.com//api/login
 
 Login should be pretty basic: 
 ```
@@ -43,14 +36,14 @@ Login should be pretty basic:
 
 ## Return info for current user
 ```Get```
-/api/users
+https://bw-guess-who.herokuapp.com//api/users
 
 This should be just a basic get request
 
 ## Return games for current user
 
 ```Get```
-/api/games
+https://bw-guess-who.herokuapp.com//api/games
 
 It should just be a basic get request
 
@@ -58,7 +51,7 @@ It should just be a basic get request
 ## Add a new game
 
 ```Post```
-/api/games
+https://bw-guess-who.herokuapp.com//api/games
 
 You'll want to format it like this...
 ```
@@ -71,11 +64,11 @@ Set instigator_id as your user's id.
 
 ## See a game by id
 ```Get```
-/api/games/:id
+https://bw-guess-who.herokuapp.com//api/games/:id
 
 ## Delete a game
 ```Delete```
-/api/games/:id
+https://bw-guess-who.herokuapp.com//api/games/:id
 
 
 ## Add a user to a new game
