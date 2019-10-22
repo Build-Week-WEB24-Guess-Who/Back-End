@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 module.exports = {
-    jwtSecret: process.env.JWT_SECRET || "beep!!!"
+    jwtSecret: process.env.JWT_SECRET 
 }
