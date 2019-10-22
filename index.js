@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const server = express();
 const cors = require("cors");
@@ -9,7 +11,7 @@ server.use("/api", userRouter);
 
 
 
-const port = 1950;
+const port = process.env.PORT;
 
 server.listen(port, () => {
     console.log(`Game on on ${port}`)

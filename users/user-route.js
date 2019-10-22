@@ -132,10 +132,10 @@ userRouter.delete("/games/:id", validate, (req, res) => {
 
 //adding and deleting friends from games
 userRouter.post("/games/:id/friends", validate, (req, res) => {
-    const { id } = req.params;
+
     const friendId = req.body;
     //how do you turn a friend name into an id #???
-    Users.addUserToGame(id, friendId)
+    Users.addUserToGame(friendId)
         .then(yas => res.status(200).json({ message: "yay!"}))
         .catch(err => res.status(500).json({ message: "meh"}))
 })
