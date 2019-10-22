@@ -24,7 +24,7 @@ This is how your item would be returned:
 }
 ```
 ## Log in a user
-```Post``` https://bw-guess-who.herokuapp.com//api/login
+```Post``` https://bw-guess-who.herokuapp.com/api/login
 
 Login should be pretty basic: 
 ```
@@ -36,14 +36,14 @@ Login should be pretty basic:
 
 ## Return info for current user
 ```Get```
-https://bw-guess-who.herokuapp.com//api/users
+https://bw-guess-who.herokuapp.com/api/users
 
 This should be just a basic get request
 
 ## Return games for current user
 
 ```Get```
-https://bw-guess-who.herokuapp.com//api/games
+https://bw-guess-who.herokuapp.com/api/games
 
 It should just be a basic get request
 
@@ -51,7 +51,7 @@ It should just be a basic get request
 ## Add a new game
 
 ```Post```
-https://bw-guess-who.herokuapp.com//api/games
+https://bw-guess-who.herokuapp.com/api/games
 
 You'll want to format it like this...
 ```
@@ -64,11 +64,11 @@ Set instigator_id as your user's id.
 
 ## See a game by id
 ```Get```
-https://bw-guess-who.herokuapp.com//api/games/:id
+https://bw-guess-who.herokuapp.com/api/games/:id
 
 ## Delete a game
 ```Delete```
-https://bw-guess-who.herokuapp.com//api/games/:id
+https://bw-guess-who.herokuapp.com/api/games/:id
 
 
 ## Add a user to a new game
