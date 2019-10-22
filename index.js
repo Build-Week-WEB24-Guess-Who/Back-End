@@ -21,3 +21,5 @@ server.listen(port, () => {
 server.get("/", (req, res) => {
     res.send("Woohoo! Game on!")
 })
+
+module.exports = server;
