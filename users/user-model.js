@@ -42,7 +42,22 @@ const addUserToGame = ( gameId, friend) => {
 }
 
 const findUserByName = (username) => {
-    return db("users").where(username);
+    return db("users").where("username", username).first();
+}
+
+const getFriendsInGame = (id) => {
+    return db("user_games as ug")
+        .join("users as u", "ug.user_id", "u.id")
+        .select("ug.id", "ug.game_id", "u.username")
+        .where("ug.game_id", id)
+
+}
+
+const getMyGames = (id) => {
+    return db("user_games as ug")
+        .join("games as g", "ug.game_id", "g.id")
+        .select("ug.id", "g.game_name")
+        .where("ug.user_id", id)
 }
 
 module.exports = {
@@ -55,5 +70,7 @@ module.exports = {
     getGameById,
     deleteGame,
     findUserByName, 
-    addUserToGame
+    addUserToGame, 
+    getFriendsInGame,
+    getMyGames
 }

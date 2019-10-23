@@ -7,9 +7,9 @@ const userRouter = require("./users/user-route");
 
 server.use(express.json());
 server.use(cors());
+// server.use("/api", userRouter);
+
 server.use("/api", userRouter);
-
-
 
 const port = process.env.PORT;
 
