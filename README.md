@@ -4,7 +4,7 @@
 
 ## Register a user
 **Information required to register a user**
-```Post``` https://bw-guess-who.herokuapp.com//api/register
+```Post``` https://bw-guess-who.herokuapp.com/api/register
 ```
 {
     username: "",
@@ -48,6 +48,7 @@ https://bw-guess-who.herokuapp.com/api/games
 It should just be a basic get request
 
 
+
 ## Add a new game
 
 ```Post```
@@ -72,3 +73,18 @@ https://bw-guess-who.herokuapp.com/api/games/:id
 
 
 ## Add a user to a new game
+It is a ```Post``` using this format:
+
+`
+{
+  username: ""
+}
+`
+
+## Get all users involved in a game
+It will be a ```get``` request:
+https://bw-guess-who.herokuapp.com/api/games/:id/friends
+
+
+## Get all games in which you are a participant and not an instigator
+

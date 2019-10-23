@@ -106,6 +106,25 @@ userRouter.get("/games", (req, res) => {
     }
 })
 
+userRouter.get("/mygames", (req, res) => {
+    if (token) {
+        jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
+            if (err) {
+                res.status(401).json({ message: "Something went wrong"})
+            } else {
+                req.user = {
+                    id: decodedToken.id,
+                }
+              Users.getMyGames(req.user.id)
+              .then(user => res.status(200).json(user))
+              .catch(err => res.status(500).json({ message: "We could not find that user at this time."})) 
+  
+            }
+        })
+  
+      }
+})
+
 //games by id (adding, deleting)
 
 userRouter.get("/games/:id", validate, (req, res) => {
@@ -130,16 +149,32 @@ userRouter.delete("/games/:id", validate, (req, res) => {
         })
 })
 
-//adding and deleting friends from games
-userRouter.post("/games/:id/friends", validate, (req, res) => {
+//adding friends to games and get those friends on your screen
 
-    const friendId = req.body;
-    //how do you turn a friend name into an id #???
-    Users.addUserToGame(friendId)
-        .then(yas => res.status(200).json({ message: "yay!"}))
-        .catch(err => res.status(500).json({ message: "meh"}))
+
+userRouter.post("/games/:id/friends", async (req, res) => {
+    const {username} = req.body;
+    console.log("req body", req.body);
+    const { id } = req.params;
+    try {
+        const friend = await Users.findUserByName(username)
+        console.log(friend);
+
+        const added = await Users.addUserToGame(id, friend.id)
+        console.log("added", added)
+
+        res.status(200).json({ message: "success"})
+    }
+    catch (err) { 
+        res.status(500).json({message: "contact backend", key: err.message})
+    }
 })
-
-
+        
+userRouter.get("/games/:id/friends", (req, res) => {
+    const { id } = req.params;
+    Users.getFriendsInGame(id)
+        .then(friends => res.status(200).json(friends))
+        .catch(err => res.status(500).json({ message: "get request failed"}))
+ })
 
 module.exports = userRouter;
