@@ -15,10 +15,11 @@ describe("can register a user", () => {
         db("users").truncate()
     })
     it("registers a user", async () => {
-        await Users.add({username: "Reverie", password: "dogamole"});
+        await Users.add({username: "j", password: "j"});
         const users = await db("users");
         let i = users.length;
         expect("users").toHaveLength(i++)
+        expect("users").toHaveProperty(username);
     })
 })
 
