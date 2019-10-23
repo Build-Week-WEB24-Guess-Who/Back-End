@@ -89,3 +89,4 @@ https://bw-guess-who.herokuapp.com/api/games/:id/friends
 
 
 ## Get all games in which you are a participant and not an instigator
+
