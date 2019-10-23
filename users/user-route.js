@@ -27,8 +27,7 @@ userRouter.post("/register", (req, res) => {
 
     Users.add(user)
         .then(saved => res.status(200).json(saved))
-        .catch(err => res.status(500).json({ message: "We could not add a new user at this time"},
-        err))
+        .catch(err => res.status(500).json(err))
 
 
 })
