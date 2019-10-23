@@ -17,16 +17,19 @@ describe("can register a user", () => {
     it("registers a user", async () => {
         await Users.add({username: "j", password: "j"});
         const users = await db("users");
+        expect(users).not.toBeUndefined();
         let i = users.length;
-        expect("users").toHaveLength(i++)
-        expect("users").toHaveProperty(username);
+        expect(users).toHaveLength(i++)
+        expect(users).toHaveProperty(username);
+        expect(users).toContain("j")
     })
 })
 
 /****functionality for users********* */
 describe("gets games", () => {
     it("should get games based off a user id number", async() => {
-       await Users.getGames(1);
+        const users = await Users.getGames(1);
+        expect(users).not.toBeUndefined();
     })
 })
 
@@ -49,11 +52,16 @@ describe("make a game", () => {
         const usergames = await db("games");
         let i = usergames.length;
         expect(usergames).toHaveLength(i++);
+        expect(usergames).not.toBeUndefined();
     })
 })
 
 describe("it should get all users with a particular game id", () => {
-    it ("should do the thing", async () => {
-        
+    it ("should do the things", async () => {
+
+        const friends = await Users.getFriendsInGame(1);
+        expect(friends).toEqual(friends);
+        expect(friends).not.toBeUndefined();
     })
 })
+
