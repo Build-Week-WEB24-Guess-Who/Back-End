@@ -59,9 +59,19 @@ describe("users", () => {
             expect(response.type);
         })
 
-        it ("should show all users", async () => {
-            await Users.getUsers()
-        })
+
     })
 } )
+
+//fix this test
+describe("games", () => {
+    describe ("route", () => {
+        it("should return a 400 status code", async () => {
+            const expectedStatusCode = 400;
+            const response = await request(server).get("/api/games");
+            expect(response.status).toEqual(expectedStatusCode);
+        })
+    })
+})
+
 

@@ -77,7 +77,7 @@ userRouter.get("/user", (req, res) => {
 
 })
 
-//routes for users' games...
+//routes for posting games, getting games you have created, and getting games in which you are involved...
 
 userRouter.post("/games", validate, (req, res) => {
     const { id } = req.user;
