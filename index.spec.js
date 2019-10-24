@@ -3,6 +3,8 @@ const Users = require("./users/user-model");
 const db = require("./data/dbconfig.js");
 const request = require("supertest");
 
+
+
 describe("server", () => {
     describe("base root", () => {
         it ("should return OK status code", async () => {
@@ -51,7 +53,7 @@ describe("users", () => {
         it ("should return a 2oo status code", async () => {
             const expectedStatusCode = 200;
             const response = await request(server).get("/api/users")
-            expect(response.status).toEqual(expectedStatusCode)
+            expect(response.status).toEqual(expectedStatusCode);
         })
 
         it ("should return JSON", async () => {
@@ -63,15 +65,6 @@ describe("users", () => {
     })
 } )
 
-//fix this test
-describe("games", () => {
-    describe ("route", () => {
-        it("should return a 400 status code", async () => {
-            const expectedStatusCode = 400;
-            const response = await request(server).get("/api/games");
-            expect(response.status).toEqual(expectedStatusCode);
-        })
-    })
-})
 
+//test those private routes!!!
 

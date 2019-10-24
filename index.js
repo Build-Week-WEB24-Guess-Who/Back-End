@@ -12,6 +12,7 @@ server.use(cors());
 server.use("/api", userRouter);
 
 const port = process.env.PORT;
+// const port = 1066;
 
 server.listen(port, () => {
     console.log(`Game on on ${port}`)
