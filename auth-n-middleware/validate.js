@@ -10,7 +10,8 @@ const validate = (req, res, next) => {
                 res.status(401).json({ message: "something went wrong"})
             } else {
                 req.user = {
-                    username: decodedToken.username
+                    username: decodedToken.username,
+                    id: decodedToken.id
                 }
                 next();
             }

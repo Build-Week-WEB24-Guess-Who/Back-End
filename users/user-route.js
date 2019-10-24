@@ -77,6 +77,34 @@ userRouter.get("/user", (req, res) => {
 
 })
 
+userRouter.put("/api/user", (req, res) => {
+    const token = req.headers.authorization;
+    if (token) {
+      jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
+          if (err) {
+              res.status(401).json({ message: "Something went wrong"})
+          } else {
+              req.user = {
+                  id: decodedToken.id,
+              }
+        Users.score(req.user.id, req.body)
+        .then(user => res.status(200).json(user))
+        .catch(err => res.status(500).json({ message: "We could not find that user at this time."})) 
+
+          }
+      })
+
+    }
+
+})
+
+userRouter.delete("/api/users/:id", validate, (req, res) => {
+    const { id } = req.user;
+    Users.deleteMyself(id)
+        .then(user => res.send.json({ message: "successful delete"}))
+        .catch(err => res.send.json({ message: "not success"}))
+})
+
 //routes for posting games, getting games you have created, and getting games in which you are involved...
 
 userRouter.post("/games", validate, (req, res) => {
