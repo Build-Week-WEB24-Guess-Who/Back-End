@@ -20,7 +20,7 @@ const getUsers = () => {
 //add games and friends functionality...
 
 const addGame = (newGame, id) => {
-    return db("games").insert(newGame)
+    return db("games").insert(newGame, "id")
 }
 
 const getGames = (id) => {
@@ -38,7 +38,7 @@ const deleteGame = (id) => {
 
 const addUserToGame = ( gameId, friend) => {
     console.log(friend);
-    return db("user_games").insert({ game_id: gameId, user_id: friend});
+    return db("user_games").insert({ game_id: gameId, user_id: friend}, "id");
 }
 
 const findUserByName = (username) => {
