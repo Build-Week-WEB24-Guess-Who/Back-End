@@ -18,6 +18,9 @@ const getUsers = () => {
     return db("users")
 }
 
+const deleteMyself = (id) => {
+    return db("users").where({ id }).delete();
+}
 
 //games functionality...
 
@@ -68,6 +71,10 @@ const deleteFriendFromGame = (id) => {
     return db("user_games").where("user_id", id).delete();
 }
 
+//scoring//
+const score = (id, newscore) => {
+    return db("users").where("id", id).update("points", newscore)
+}
 
 
 module.exports = {
@@ -75,6 +82,7 @@ module.exports = {
     add,
     findBy, 
     findById,
+    deleteMyself,
     addGame,
     getGames,
     getGameById,
@@ -83,5 +91,6 @@ module.exports = {
     addUserToGame, 
     getFriendsInGame,
     getMyGames,
-    deleteFriendFromGame
+    deleteFriendFromGame,
+    score
 }
