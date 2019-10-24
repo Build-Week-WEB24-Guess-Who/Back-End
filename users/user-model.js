@@ -17,7 +17,9 @@ const findBy = filter => {
 const getUsers = () => {
     return db("users")
 }
-//add games and friends functionality...
+
+
+//games functionality...
 
 const addGame = (newGame, id) => {
     return db("games").insert(newGame, "id")
@@ -28,6 +30,13 @@ const getGames = (id) => {
     return db("games").where({ instigator_id: id });
 }
 
+const getMyGames = (id) => {
+    return db("user_games as ug")
+        .join("games as g", "ug.game_id", "g.id")
+        .select("ug.id", "g.game_name")
+        .where("ug.user_id", id)
+}
+
 const getGameById = (id) => {
     return db("games").where({id});
 }
@@ -35,6 +44,8 @@ const getGameById = (id) => {
 const deleteGame = (id) => {
     return db("games").where({id}).delete();
 }
+
+//friends-in-games functionality
 
 const addUserToGame = ( gameId, friend) => {
     console.log(friend);
@@ -53,12 +64,11 @@ const getFriendsInGame = (id) => {
 
 }
 
-const getMyGames = (id) => {
-    return db("user_games as ug")
-        .join("games as g", "ug.game_id", "g.id")
-        .select("ug.id", "g.game_name")
-        .where("ug.user_id", id)
+const deleteFriendFromGame = (id) => {
+    return db("user_games").where("user_id", id).delete();
 }
+
+
 
 module.exports = {
     getUsers,
@@ -72,5 +82,6 @@ module.exports = {
     findUserByName, 
     addUserToGame, 
     getFriendsInGame,
-    getMyGames
+    getMyGames,
+    deleteFriendFromGame
 }

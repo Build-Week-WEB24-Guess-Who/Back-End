@@ -177,4 +177,11 @@ userRouter.get("/games/:id/friends", (req, res) => {
         .catch(err => res.status(500).json({ message: "get request failed"}))
  })
 
+ userRouter.delete("/friends/:id", (req, res) => {
+     const { id } = req.params;
+     Users.deleteFriendFromGame(id)
+        .then(yeet => res.status(200).json(yeet))
+        .catch(err => res.status(500).json({ message: "Can't delete that friend.They're stuck to you like glue. >:D"}))
+ })
+
 module.exports = userRouter;

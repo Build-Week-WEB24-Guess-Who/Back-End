@@ -3,6 +3,9 @@ const Users = require("./users/user-model");
 const db = require("./data/dbconfig.js");
 const request = require("supertest");
 
+    beforeEach(async () => {
+        await db("users").truncate();
+    })
 
 
 describe("server", () => {
@@ -27,9 +30,7 @@ describe("login", () => {
 
 describe("register", () => {
 
-    beforeEach(async () => {
-        await db("users").truncate();
-    })
+
     describe("route", () => {
         it ("should return 404 status code", async () => {
             const expectedStatusCode = 404;
@@ -66,5 +67,5 @@ describe("users", () => {
 } )
 
 
-//test those private routes!!!
+
 
