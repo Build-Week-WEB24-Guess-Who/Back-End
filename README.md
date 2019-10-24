@@ -89,4 +89,7 @@ https://bw-guess-who.herokuapp.com/api/games/:id/friends
 
 
 ## Get all games in which you are a participant and not an instigator
+https://bw-guess-who.herokuapp.com/api/mygames
 
+## Delete a user from a game:
+https://bw-guess-who.herokuapp.com/api/friends/:id
