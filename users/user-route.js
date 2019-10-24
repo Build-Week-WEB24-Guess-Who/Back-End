@@ -98,7 +98,7 @@ userRouter.put("/api/user", (req, res) => {
 
 })
 
-userRouter.delete("/api/users/:id", validate, (req, res) => {
+userRouter.delete("/api/users", validate, (req, res) => {
     const { id } = req.user;
     Users.deleteMyself(id)
         .then(user => res.send.json({ message: "successful delete"}))

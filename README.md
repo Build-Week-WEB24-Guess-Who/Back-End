@@ -63,6 +63,10 @@ You'll want to format it like this...
 ```
 Set instigator_id as your user's id.
 
+## Delete a user from game
+```Delete```
+https://bw-guess-who.herokuapp.com/api/users
+
 ## See a game by id
 ```Get```
 https://bw-guess-who.herokuapp.com/api/games/:id
