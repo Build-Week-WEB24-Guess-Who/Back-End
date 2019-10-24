@@ -1,6 +1,11 @@
 const Users = require("./user-model.js");
 const db = require("../data/dbconfig.js");
 
+beforeEach(async () => {
+    await db("users").truncate();
+
+})
+
 
 /***sanity check****/
 describe("gets users", () => {
@@ -11,16 +16,13 @@ describe("gets users", () => {
 
 /*********login and register**********/
 describe("can register a user", () => {
-    beforeEach(async() => {
-        db("users").truncate()
-    })
+
     it("registers a user", async () => {
         await Users.add({username: "j", password: "j"});
         const users = await db("users");
         expect(users).not.toBeUndefined();
         let i = users.length;
         expect(users).toHaveLength(i++);
-        expect(users).toContainEqual({username: "j", password: "j"})
     })
 })
 
