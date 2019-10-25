@@ -1,10 +1,18 @@
 # Back-End
 
+## Table of Contents
+* Handle users
+* Handle games
+* Handle friends within games
 
+## Handle Users
 
-## Register a user
-**Information required to register a user**
-```Post``` https://bw-guess-who.herokuapp.com/api/register
+### Register a user
+
+```Post``` to https://bw-guess-who.herokuapp.com/api/register
+
+Your object should look like this:
+
 ```
 {
     username: "",
@@ -23,8 +31,9 @@ This is how your item would be returned:
   "level": "Beginner"
 }
 ```
-## Log in a user
-```Post``` https://bw-guess-who.herokuapp.com/api/login
+### Log in a user
+
+```Post``` to  https://bw-guess-who.herokuapp.com/api/login
 
 Login should be pretty basic: 
 ```
@@ -34,22 +43,52 @@ Login should be pretty basic:
 }
 ```
 
-## Return info for current user
-```Get```
-https://bw-guess-who.herokuapp.com/api/users
+### Return info for current user
 
-This should be just a basic get request
+```Get``` from https://bw-guess-who.herokuapp.com/api/users
 
-## Return games for current user
+This should be just a basic get request.
+
+
+
+
+
+### Update points
+This allows you to update a user's points. It will be shaped like this: 
+```
+{
+  points: 15
+}
+```
+You can replace 15 with an integer of your choice.
+
+```put```https://bw-guess-who.herokuapp.com/api/users/:id
+
+### Delete current user
+A user can delete their own account from the inside:
+
+```Delete```
+https://bw-guess-who.herokuapp.com/api/users/:id
+
+
+## Handle Games
+Once they get into their accounts, users can add, view, and delete their games
+
+### Return games for current user (instigator)
+This is for games that the user has initiated.
 
 ```Get```
 https://bw-guess-who.herokuapp.com/api/games
 
 It should just be a basic get request
 
+### Return games for current user (participant)
+This is for the games in which the user is participating but has not initiated:
 
+```Get```
+https://bw-guess-who.herokuapp.com/api/mygames
 
-## Add a new game
+### Add a new game
 
 ```Post```
 https://bw-guess-who.herokuapp.com/api/games
@@ -63,20 +102,19 @@ You'll want to format it like this...
 ```
 Set instigator_id as your user's id.
 
-## Delete a user from game
-```Delete```
-https://bw-guess-who.herokuapp.com/api/users
 
-## See a game by id
+
+### See a game by id
 ```Get```
 https://bw-guess-who.herokuapp.com/api/games/:id
 
-## Delete a game
+### Delete a game
 ```Delete```
 https://bw-guess-who.herokuapp.com/api/games/:id
 
+## Handle friends with games
 
-## Add a user to a new game
+### Add a user to a new game
 It is a ```Post``` using this format:
 
 `
@@ -84,16 +122,16 @@ It is a ```Post``` using this format:
   username: ""
 }
 `
+https://bw-guess-who.herokuapp.com/api/games/:id
 
-
-## Get all users involved in a game
+### Get all users involved in a game
 It will be a ```get``` request:
 https://bw-guess-who.herokuapp.com/api/games/:id/friends
 
 
 
-## Get all games in which you are a participant and not an instigator
-https://bw-guess-who.herokuapp.com/api/mygames
 
-## Delete a user from a game:
+### Delete a user from a game:
+It's just a ```delete```
+
 https://bw-guess-who.herokuapp.com/api/friends/:id

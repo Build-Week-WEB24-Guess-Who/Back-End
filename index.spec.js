@@ -5,9 +5,9 @@ const request = require("supertest");
 
 
 describe ("sanity check to prep for testing", () => {
-    beforeEach( () => {
-         db("users").truncate();
-        request(server).post("/api/register").send({ username: "mop", password: "alsomop"})
+    beforeEach( async () => {
+         await db("users").truncate();
+        await request(server).post("/api/register").send({ username: "mop", password: "alsomop"})
     })
 })
 
@@ -79,8 +79,8 @@ describe ("games", () => {
         const response = request(server)
         .post("/api/login")
         .send({
-            username: "mop",
-            password: "alsomop"
+            username: "Bobby",
+            password: "b0b"
         })
 
         console.log("RESPONSE!!!!", response);
