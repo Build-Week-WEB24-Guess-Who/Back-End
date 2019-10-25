@@ -72,8 +72,8 @@ const deleteFriendFromGame = (id) => {
 }
 
 //scoring//
-const score = (id, newscore) => {
-    return db("users").where("id", id).update("points", newscore)
+const score = (userid, newscore) => {
+    return db("users").where({id: userid}).update({points: newscore})
 }
 
 
